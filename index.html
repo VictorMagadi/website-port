@@ -1,1 +1,1097 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Victor Magadi | Data Analyst & Business Intelligence Specialist</title>
+    <meta name="description" content="Victor Magadi - Data Analyst specializing in financial modeling, geospatial analytics, and business intelligence. Transforming complex data into strategic decisions.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0f172a;
+            color: #e2e8f0;
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #34d399 0%, #3b82f6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .glass-card {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .timeline-line {
+            position: absolute;
+            left: 20px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, #34d399, #3b82f6, transparent);
+        }
+        
+        .hover-lift {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .hover-lift:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 10px 10px -5px rgba(0, 0, 0, 0.3);
+        }
+        
+        .skill-tag {
+            background: rgba(59, 130, 246, 0.1);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            color: #60a5fa;
+        }
+        
+        .data-card {
+            background: linear-gradient(145deg, rgba(30, 41, 59, 0.9), rgba(15, 23, 42, 0.9));
+            border: 1px solid rgba(52, 211, 153, 0.2);
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .animate-on-scroll {
+            opacity: 0;
+            animation: fadeInUp 0.8s ease forwards;
+        }
+        
+        .stagger-1 { animation-delay: 0.1s; }
+        .stagger-2 { animation-delay: 0.2s; }
+        .stagger-3 { animation-delay: 0.3s; }
+        .stagger-4 { animation-delay: 0.4s; }
+        
+        .metric-card {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid rgba(52, 211, 153, 0.3);
+        }
+        
+        .chart-bar {
+            background: linear-gradient(to top, #34d399, #3b82f6);
+            transition: height 1s ease;
+        }
+    </style>
+<base target="_blank">
+</head>
+<body class="antialiased overflow-x-hidden">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 top-0 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex-shrink-0 flex items-center gap-2 cursor-pointer" onclick="window.scrollTo(0,0)">
+                    <div class="w-8 h-8 bg-gradient-to-br from-emerald-400 to-blue-500 rounded-lg flex items-center justify-center">
+                        <i data-lucide="bar-chart-2" class="w-4 h-4 text-white"></i>
+                    </div>
+                    <span class="font-bold text-xl tracking-tight text-white">Victor Magadi</span>
+                </div>
+                
+                <div class="hidden md:flex space-x-8">
+                    <a href="#about" class="text-slate-300 hover:text-emerald-400 transition-colors text-sm font-medium">About</a>
+                    <a href="#analytics" class="text-slate-300 hover:text-emerald-400 transition-colors text-sm font-medium">Analytics</a>
+                    <a href="#experience" class="text-slate-300 hover:text-emerald-400 transition-colors text-sm font-medium">Experience</a>
+                    <a href="#projects" class="text-slate-300 hover:text-emerald-400 transition-colors text-sm font-medium">Projects</a>
+                    <a href="#expertise" class="text-slate-300 hover:text-emerald-400 transition-colors text-sm font-medium">Expertise</a>
+                    <a href="#contact" class="bg-gradient-to-r from-emerald-500 to-blue-500 text-white px-4 py-2 rounded-full text-sm font-medium hover:shadow-lg transition-all">Contact</a>
+                </div>
+
+                <button class="md:hidden text-white" id="mobile-menu-btn">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div class="md:hidden hidden bg-slate-900 border-t border-slate-800" id="mobile-menu">
+            <div class="px-4 pt-2 pb-6 space-y-2">
+                <a href="#about" class="block px-3 py-2 text-slate-300 hover:text-emerald-400">About</a>
+                <a href="#analytics" class="block px-3 py-2 text-slate-300 hover:text-emerald-400">Analytics</a>
+                <a href="#experience" class="block px-3 py-2 text-slate-300 hover:text-emerald-400">Experience</a>
+                <a href="#projects" class="block px-3 py-2 text-slate-300 hover:text-emerald-400">Projects</a>
+                <a href="#expertise" class="block px-3 py-2 text-slate-300 hover:text-emerald-400">Expertise</a>
+                <a href="#contact" class="block px-3 py-2 text-emerald-400 font-medium">Contact Me</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="min-h-screen flex items-center justify-center relative overflow-hidden pt-16">
+        <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-blue-900/20 via-slate-900/0 to-slate-900/0"></div>
+        <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,_var(--tw-gradient-stops))] from-emerald-900/20 via-slate-900/0 to-slate-900/0"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center max-w-4xl mx-auto">
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-800/50 border border-slate-700 mb-6 animate-on-scroll">
+                    <span class="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></span>
+                    <span class="text-sm text-slate-300">Available for Data Analytics Opportunities</span>
+                </div>
+                
+                <h1 class="text-5xl md:text-7xl font-bold mb-6 tracking-tight animate-on-scroll">
+                    Transforming Data into <span class="gradient-text">Strategic Decisions</span>
+                </h1>
+                
+                <p class="text-lg md:text-xl text-slate-400 max-w-2xl mx-auto mb-10 leading-relaxed animate-on-scroll stagger-2">
+                    Data Analyst & Business Intelligence Specialist with expertise in financial modeling, geospatial analytics, and predictive modeling. I bridge the gap between raw data and actionable business insights.
+                </p>
+                
+                <div class="flex flex-wrap justify-center gap-3 mb-8 animate-on-scroll stagger-3">
+                    <span class="px-4 py-2 bg-slate-800 rounded-full text-slate-300 border border-slate-700 text-sm">Python & SQL</span>
+                    <span class="px-4 py-2 bg-slate-800 rounded-full text-slate-300 border border-slate-700 text-sm">Power BI & Tableau</span>
+                    <span class="px-4 py-2 bg-slate-800 rounded-full text-slate-300 border border-slate-700 text-sm">Financial Modeling</span>
+                    <span class="px-4 py-2 bg-slate-800 rounded-full text-slate-300 border border-slate-700 text-sm">Geospatial Analysis</span>
+                </div>
+                
+                <div class="flex flex-col sm:flex-row gap-4 justify-center animate-on-scroll stagger-4">
+                    <a href="#projects" class="px-8 py-4 bg-gradient-to-r from-emerald-500 to-blue-600 text-white rounded-full font-semibold hover:shadow-2xl hover:scale-105 transition-all flex items-center justify-center gap-2">
+                        <span>View Portfolio</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    </a>
+                    <a href="#contact" class="px-8 py-4 bg-slate-800 text-white rounded-full font-semibold hover:bg-slate-700 transition-all border border-slate-700">
+                        Let's Connect
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <i data-lucide="chevron-down" class="w-6 h-6 text-slate-500"></i>
+        </div>
+    </section>
+
+    <!-- Analytics Impact Section -->
+    <section id="analytics" class="py-20 bg-slate-900/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Analytics <span class="gradient-text">Impact</span></h2>
+                <p class="text-slate-400">Quantifiable results delivered through data-driven decision making</p>
+            </div>
+
+            <div class="grid md:grid-cols-4 gap-6 mb-16">
+                <div class="metric-card p-6 rounded-2xl text-center hover-lift">
+                    <div class="text-4xl font-bold text-emerald-400 mb-2">95%</div>
+                    <div class="text-sm text-slate-400">Forecasting Accuracy</div>
+                    <div class="text-xs text-slate-500 mt-1">Financial Models & Projections</div>
+                </div>
+                <div class="metric-card p-6 rounded-2xl text-center hover-lift">
+                    <div class="text-4xl font-bold text-blue-400 mb-2">40%</div>
+                    <div class="text-sm text-slate-400">Efficiency Gains</div>
+                    <div class="text-xs text-slate-500 mt-1">Process Optimization</div>
+                </div>
+                <div class="metric-card p-6 rounded-2xl text-center hover-lift">
+                    <div class="text-4xl font-bold text-purple-400 mb-2">6+</div>
+                    <div class="text-sm text-slate-400">Industries Analyzed</div>
+                    <div class="text-xs text-slate-500 mt-1">Real Estate to Supply Chain</div>
+                </div>
+                <div class="metric-card p-6 rounded-2xl text-center hover-lift">
+                    <div class="text-4xl font-bold text-orange-400 mb-2">50+</div>
+                    <div class="text-sm text-slate-400">Datasets Processed</div>
+                    <div class="text-xs text-slate-500 mt-1">From Kiva Loans to Geospatial</div>
+                </div>
+            </div>
+
+            <!-- Skills Visualization -->
+            <div class="glass-card rounded-2xl p-8">
+                <h3 class="text-xl font-bold mb-6 text-center">Technical Proficiency Distribution</h3>
+                <div class="space-y-6 max-w-3xl mx-auto">
+                    <div>
+                        <div class="flex justify-between mb-2">
+                            <span class="text-white font-medium flex items-center gap-2">
+                                <i data-lucide="database" class="w-4 h-4 text-emerald-400"></i>
+                                Data Analysis & Visualization (Python, SQL, Power BI)
+                            </span>
+                            <span class="text-emerald-400">95%</span>
+                        </div>
+                        <div class="h-3 bg-slate-800 rounded-full overflow-hidden">
+                            <div class="h-full bg-gradient-to-r from-emerald-500 to-blue-500 w-[95%] rounded-full"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between mb-2">
+                            <span class="text-white font-medium flex items-center gap-2">
+                                <i data-lucide="brain" class="w-4 h-4 text-purple-400"></i>
+                                Data Science & Machine Learning (Scikit-learn, XGBoost)
+                            </span>
+                            <span class="text-purple-400">85%</span>
+                        </div>
+                        <div class="h-3 bg-slate-800 rounded-full overflow-hidden">
+                            <div class="h-full bg-gradient-to-r from-purple-500 to-pink-500 w-[85%] rounded-full"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between mb-2">
+                            <span class="text-white font-medium flex items-center gap-2">
+                                <i data-lucide="trending-up" class="w-4 h-4 text-blue-400"></i>
+                                Financial Modeling & FP&A (Excel, Valuation)
+                            </span>
+                            <span class="text-blue-400">90%</span>
+                        </div>
+                        <div class="h-3 bg-slate-800 rounded-full overflow-hidden">
+                            <div class="h-full bg-gradient-to-r from-blue-500 to-purple-500 w-[90%] rounded-full"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex justify-between mb-2">
+                            <span class="text-white font-medium flex items-center gap-2">
+                                <i data-lucide="map" class="w-4 h-4 text-teal-400"></i>
+                                Geospatial Analytics (GIS, AutoCAD, Remote Sensing)
+                            </span>
+                            <span class="text-teal-400">85%</span>
+                        </div>
+                        <div class="h-3 bg-slate-800 rounded-full overflow-hidden">
+                            <div class="h-full bg-gradient-to-r from-teal-500 to-emerald-500 w-[85%] rounded-full"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="relative">
+                    <div class="aspect-square rounded-2xl overflow-hidden bg-slate-800 relative z-10">
+                        <img src="http://static.photos/professional/640x360/42" alt="Victor Magadi - Data Analyst" class="object-cover w-full h-full opacity-90 hover:opacity-100 transition-opacity">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent"></div>
+                        <div class="absolute bottom-4 left-4 right-4">
+                            <div class="glass-card p-4 rounded-xl">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-10 h-10 bg-emerald-500/20 rounded-lg flex items-center justify-center">
+                                        <i data-lucide="award" class="w-5 h-5 text-emerald-400"></i>
+                                    </div>
+                                    <div>
+                                        <div class="text-white font-semibold text-sm">FMVA Certified</div>
+                                        <div class="text-slate-400 text-xs">Corporate Finance Institute</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="absolute -bottom-6 -right-6 w-32 h-32 bg-emerald-500/20 rounded-full blur-3xl"></div>
+                    <div class="absolute -top-6 -left-6 w-32 h-32 bg-blue-500/20 rounded-full blur-3xl"></div>
+                </div>
+                
+                <div>
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6">Data Storyteller & <span class="gradient-text">Analytical Strategist</span></h2>
+                    <div class="space-y-4 text-slate-400 leading-relaxed">
+                        <p>
+                            I specialize in translating complex datasets into compelling narratives that drive business decisions. With a unique background spanning financial analysis, geospatial mapping, and operational optimization, I bring a multidimensional approach to data analytics.
+                        </p>
+                        <p>
+                            My analytical journey began in land surveying and geospatial data collection, where I developed precision in data acquisition and spatial analysis. This foundation evolved into financial modeling and business intelligence, where I've built predictive models achieving 95% forecasting accuracy and optimized operational workflows resulting in 40% efficiency improvements.
+                        </p>
+                        <p>
+                            Currently, I leverage data-driven methodologies in youth development analytics at Vijana Amani Pamoja, tracking program metrics and outcomes to maximize social impact. My diverse industry experience—from real estate market analysis to supply chain logistics—enables me to adapt quickly to new data environments and deliver insights that matter.
+                        </p>
+                    </div>
+                    
+                    <div class="mt-8 flex flex-wrap gap-3">
+                        <span class="skill-tag px-3 py-1 rounded-full text-sm">Statistical Analysis</span>
+                        <span class="skill-tag px-3 py-1 rounded-full text-sm">Machine Learning</span>
+                        <span class="skill-tag px-3 py-1 rounded-full text-sm">Data Wrangling</span>
+                        <span class="skill-tag px-3 py-1 rounded-full text-sm">Predictive Modeling</span>
+                        <span class="skill-tag px-3 py-1 rounded-full text-sm">Business Intelligence</span>
+                        <span class="skill-tag px-3 py-1 rounded-full text-sm">Financial Forecasting</span>
+                        <span class="skill-tag px-3 py-1 rounded-full text-sm">Geospatial Analytics</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section - Reframed for Data Analytics -->
+    <section id="experience" class="py-20 bg-slate-900/50">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Professional <span class="gradient-text">Experience</span></h2>
+                <p class="text-slate-400">Data-centric roles across finance, operations, and geospatial intelligence</p>
+            </div>
+
+            <div class="relative space-y-12">
+                <div class="timeline-line"></div>
+
+                <!-- Current Role - Data Framed -->
+                <div class="relative pl-12 md:pl-20">
+                    <div class="absolute left-0 w-10 h-10 bg-emerald-500 rounded-full border-4 border-slate-900 flex items-center justify-center z-10">
+                        <i data-lucide="activity" class="w-4 h-4 text-white"></i>
+                    </div>
+                    <div class="data-card p-6 rounded-2xl hover-lift">
+                        <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-2">
+                            <div>
+                                <h3 class="text-xl font-bold text-white">Program Data Analyst & Impact Coordinator</h3>
+                                <p class="text-emerald-400 font-medium">Vijana Amani Pamoja</p>
+                            </div>
+                            <span class="text-sm text-slate-500 mt-2 md:mt-0">Jul 2024 - Present</span>
+                        </div>
+                        <p class="text-slate-400 text-sm mb-3">Nairobi County, Kenya</p>
+                        <ul class="text-slate-300 text-sm leading-relaxed space-y-2">
+                            <li class="flex items-start gap-2">
+                                <i data-lucide="check-circle" class="w-4 h-4 text-emerald-400 mt-0.5 flex-shrink-0"></i>
+                                <span>Develop and maintain participant tracking databases, monitoring engagement metrics and program outcomes for 200+ youth beneficiaries</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i data-lucide="check-circle" class="w-4 h-4 text-emerald-400 mt-0.5 flex-shrink-0"></i>
+                                <span>Create monthly performance dashboards using Excel and Power BI to visualize program impact and guide strategic resource allocation</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i data-lucide="check-circle" class="w-4 h-4 text-emerald-400 mt-0.5 flex-shrink-0"></i>
+                                <span>Conduct statistical analysis on behavioral data to identify trends in youth development and optimize intervention strategies</span>
+                            </li>
+                        </ul>
+                        <div class="mt-4 flex flex-wrap gap-2">
+                            <span class="text-xs px-2 py-1 bg-slate-800 rounded text-slate-400">Excel</span>
+                            <span class="text-xs px-2 py-1 bg-slate-800 rounded text-slate-400">Power BI</span>
+                            <span class="text-xs px-2 py-1 bg-slate-800 rounded text-slate-400">Data Collection</span>
+                            <span class="text-xs px-2 py-1 bg-slate-800 rounded text-slate-400">Impact Metrics</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Real Estate - Data Framed -->
+                <div class="relative pl-12 md:pl-20">
+                    <div class="absolute left-0 w-10 h-10 bg-blue-500 rounded-full border-4 border-slate-900 flex items-center justify-center z-10">
+                        <i data-lucide="home" class="w-4 h-4 text-white"></i>
+                    </div>
+                    <div class="data-card p-6 rounded-2xl hover-lift">
+                        <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-2">
+                            <div>
+                                <h3 class="text-xl font-bold text-white">Real Estate Market Analyst</h3>
+                                <p class="text-blue-400 font-medium">Ravi Homes Kenya</p>
+                            </div>
+                            <span class="text-sm text-slate-500 mt-2 md:mt-0">Apr 2023 - Dec 2023</span>
+                        </div>
+                        <p class="text-slate-400 text-sm mb-3">Nairobi County, Kenya</p>
+                        <ul class="text-slate-300 text-sm leading-relaxed space-y-2">
+                            <li class="flex items-start gap-2">
+                                <i data-lucide="check-circle" class="w-4 h-4 text-blue-400 mt-0.5 flex-shrink-0"></i>
+                                <span>Analyzed property market trends and pricing data to identify investment opportunities and optimize portfolio performance</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i data-lucide="check-circle" class="w-4 h-4 text-blue-400 mt-0.5 flex-shrink-0"></i>
+                                <span>Built client relationship management (CRM) analytics system tracking lead conversion rates and customer acquisition costs</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i data-lucide="check-circle" class="w-4 h-4 text-blue-400 mt-0.5 flex-shrink-0"></i>
+                                <span>Developed automated reporting templates for property valuation analysis, reducing assessment time by 30%</span>
+                            </li>
+                        </ul>
+                        <div class="mt-4 flex flex-wrap gap-2">
+                            <span class="text-xs px-2 py-1 bg-slate-800 rounded text-slate-400">Market Analysis</span>
+                            <span class="text-xs px-2 py-1 bg-slate-800 rounded text-slate-400">CRM Analytics</span>
+                            <span class="text-xs px-2 py-1 bg-slate-800 rounded text-slate-400">Excel Modeling</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Loss Control - Data Framed -->
+                <div class="relative pl-12 md:pl-20">
+                    <div class="absolute left-0 w-10 h-10 bg-purple-500 rounded-full border-4 border-slate-900 flex items-center justify-center z-10">
+                        <i data-lucide="shield" class="w-4 h-4 text-white"></i>
+                    </div>
+                    <div class="data-card p-6 rounded-2xl hover-lift">
+                        <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-2">
+                            <div>
+                                <h3 class="text-xl font-bold text-white">Financial Data Analyst</h3>
+                                <p class="text-purple-400 font-medium">Achievo Limited</p>
+                            </div>
+                            <span class="text-sm text-slate-500 mt-2 md:mt-0">Aug 2021 - Nov 2021</span>
+                        </div>
+                        <p class="text-slate-400 text-sm mb-3">Nairobi County, Kenya</p>
+                        <ul class="text-slate-300 text-sm leading-relaxed space-y-2">
+                            <li class="flex items-start gap-2">
+                                <i data-lucide="check-circle" class="w-4 h-4 text-purple-400 mt-0.5 flex-shrink-0"></i>
+                                <span>Performed financial audits and variance analysis on operational data, identifying cost-saving opportunities totaling 15% budget reduction</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i data-lucide="check-circle" class="w-4 h-4 text-purple-400 mt-0.5 flex-shrink-0"></i>
+                                <span>Reconciled complex account datasets and built automated bookkeeping systems in QuickBooks and Excel</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i data-lucide="check-circle" class="w-4 h-4 text-purple-400 mt-0.5 flex-shrink-0"></i>
+                                <span>Created risk assessment models analyzing transaction patterns to detect anomalies and prevent financial losses</span>
+                            </li>
+                        </ul>
+                        <div class="mt-4 flex flex-wrap gap-2">
+                            <span class="text-xs px-2 py-1 bg-slate-800 rounded text-slate-400">Financial Modeling</span>
+                            <span class="text-xs px-2 py-1 bg-slate-800 rounded text-slate-400">Risk Analysis</span>
+                            <span class="text-xs px-2 py-1 bg-slate-800 rounded text-slate-400">QuickBooks</span>
+                            <span class="text-xs px-2 py-1 bg-slate-800 rounded text-slate-400">Audit Analytics</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Operations - Data Framed -->
+                <div class="relative pl-12 md:pl-20">
+                    <div class="absolute left-0 w-10 h-10 bg-orange-500 rounded-full border-4 border-slate-900 flex items-center justify-center z-10">
+                        <i data-lucide="truck" class="w-4 h-4 text-white"></i>
+                    </div>
+                    <div class="data-card p-6 rounded-2xl hover-lift">
+                        <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-2">
+                            <div>
+                                <h3 class="text-xl font-bold text-white">Operations Data Analyst</h3>
+                                <p class="text-orange-400 font-medium">Cleo Pradox Supplies Kenya Ltd</p>
+                            </div>
+                            <span class="text-sm text-slate-500 mt-2 md:mt-0">Jun 2020 - Jul 2021</span>
+                        </div>
+                        <p class="text-slate-400 text-sm mb-3">Nairobi County, Kenya</p>
+                        <ul class="text-slate-300 text-sm leading-relaxed space-y-2">
+                            <li class="flex items-start gap-2">
+                                <i data-lucide="check-circle" class="w-4 h-4 text-orange-400 mt-0.5 flex-shrink-0"></i>
+                                <span>Optimized supply chain logistics through data analysis, improving delivery efficiency by 40% through route and inventory optimization</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i data-lucide="check-circle" class="w-4 h-4 text-orange-400 mt-0.5 flex-shrink-0"></i>
+                                <span>Managed CRM data architecture and generated automated performance reports for stakeholder decision-making</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i data-lucide="check-circle" class="w-4 h-4 text-orange-400 mt-0.5 flex-shrink-0"></i>
+                                <span>Implemented data collection protocols for operational metrics, establishing KPI dashboards for real-time monitoring</span>
+                            </li>
+                        </ul>
+                        <div class="mt-4 flex flex-wrap gap-2">
+                            <span class="text-xs px-2 py-1 bg-slate-800 rounded text-slate-400">Supply Chain Analytics</span>
+                            <span class="text-xs px-2 py-1 bg-slate-800 rounded text-slate-400">KPI Dashboards</span>
+                            <span class="text-xs px-2 py-1 bg-slate-800 rounded text-slate-400">Process Optimization</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Surveying - Data Framed -->
+                <div class="relative pl-12 md:pl-20">
+                    <div class="absolute left-0 w-10 h-10 bg-teal-500 rounded-full border-4 border-slate-900 flex items-center justify-center z-10">
+                        <i data-lucide="map" class="w-4 h-4 text-white"></i>
+                    </div>
+                    <div class="data-card p-6 rounded-2xl hover-lift">
+                        <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-2">
+                            <div>
+                                <h3 class="text-xl font-bold text-white">Geospatial Data Specialist</h3>
+                                <p class="text-teal-400 font-medium">Geometric Construction Company Ltd</p>
+                            </div>
+                            <span class="text-sm text-slate-500 mt-2 md:mt-0">Feb 2020 - Jun 2020</span>
+                        </div>
+                        <p class="text-slate-400 text-sm mb-3">Nairobi, Kenya</p>
+                        <ul class="text-slate-300 text-sm leading-relaxed space-y-2">
+                            <li class="flex items-start gap-2">
+                                <i data-lucide="check-circle" class="w-4 h-4 text-teal-400 mt-0.5 flex-shrink-0"></i>
+                                <span>Processed spatial datasets using AutoCAD and GIS software, creating precision mapping solutions for construction projects</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i data-lucide="check-circle" class="w-4 h-4 text-teal-400 mt-0.5 flex-shrink-0"></i>
+                                <span>Maintained geodetic databases and performed spatial analysis for land use planning and boundary delineation</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i data-lucide="check-circle" class="w-4 h-4 text-teal-400 mt-0.5 flex-shrink-0"></i>
+                                <span>Developed data validation protocols ensuring 99.8% accuracy in survey measurements and cadastral records</span>
+                            </li>
+                        </ul>
+                        <div class="mt-4 flex flex-wrap gap-2">
+                            <span class="text-xs px-2 py-1 bg-slate-800 rounded text-slate-400">AutoCAD</span>
+                            <span class="text-xs px-2 py-1 bg-slate-800 rounded text-slate-400">GIS</span>
+                            <span class="text-xs px-2 py-1 bg-slate-800 rounded text-slate-400">Spatial Analysis</span>
+                            <span class="text-xs px-2 py-1 bg-slate-800 rounded text-slate-400">Data Validation</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Featured <span class="gradient-text">Projects</span></h2>
+                <p class="text-slate-400">End-to-end analytics solutions demonstrating technical proficiency</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1: Kiva Analysis -->
+                <div class="glass-card rounded-2xl overflow-hidden hover-lift group">
+                    <div class="relative overflow-hidden h-48 bg-slate-800">
+                        <div class="absolute inset-0 bg-gradient-to-br from-emerald-600/20 to-blue-600/20"></div>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i data-lucide="pie-chart" class="w-16 h-16 text-emerald-400/50"></i>
+                        </div>
+                        <div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-slate-900 to-transparent">
+                            <span class="text-xs font-semibold text-emerald-400 bg-emerald-400/10 px-2 py-1 rounded">Data Analysis</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white mb-2">Kiva Microloans Impact Analysis</h3>
+                        <p class="text-slate-400 text-sm mb-4">
+                            Comprehensive EDA of Kiva lending data in the Philippines. Identified geographic lending patterns, sector performance, and repayment trends using Python and Pandas.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="text-xs px-2 py-1 bg-slate-800 rounded text-slate-400">Python</span>
+                            <span class="text-xs px-2 py-1 bg-slate-800 rounded text-slate-400">Pandas</span>
+                            <span class="text-xs px-2 py-1 bg-slate-800 rounded text-slate-400">Matplotlib</span>
+                            <span class="text-xs px-2 py-1 bg-slate-800 rounded text-slate-400">Data Cleaning</span>
+                        </div>
+                        <div class="flex gap-2">
+                            <a href="https://www.kaggle.com/code/victormagadi/exercise-your-first-map" target="_blank" class="flex-1 bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-400 py-2 rounded-lg text-sm font-medium text-center transition-colors">
+                                View Analysis
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2: Financial Model -->
+                <div class="glass-card rounded-2xl overflow-hidden hover-lift group">
+                    <div class="relative overflow-hidden h-48 bg-slate-800">
+                        <div class="absolute inset-0 bg-gradient-to-br from-blue-600/20 to-purple-600/20"></div>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i data-lucide="trending-up" class="w-16 h-16 text-blue-400/50"></i>
+                        </div>
+                        <div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-slate-900 to-transparent">
+                            <span class="text-xs font-semibold text-blue-400 bg-blue-400/10 px-2 py-1 rounded">Financial Modeling</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white mb-2">3-Statement Financial Model</h3>
+                        <p class="text-slate-400 text-sm mb-4">
+                            Integrated financial model linking IS, BS, and CF with dynamic scenarios. Includes DCF valuation, sensitivity analysis, and Monte Carlo simulation for risk assessment.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="text-xs px-2 py-1 bg-slate-800 rounded text-slate-400">Excel</span>
+                            <span class="text-xs px-2 py-1 bg-slate-800 rounded text-slate-400">VBA</span>
+                            <span class="text-xs px-2 py-1 bg-slate-800 rounded text-slate-400">Forecasting</span>
+                            <span class="text-xs px-2 py-1 bg-slate-800 rounded text-slate-400">Valuation</span>
+                        </div>
+                        <div class="flex gap-2">
+                            <a href="#" class="flex-1 bg-blue-500/20 hover:bg-blue-500/30 text-blue-400 py-2 rounded-lg text-sm font-medium text-center transition-colors">
+                                View Model
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3: Power BI Dashboard -->
+                <div class="glass-card rounded-2xl overflow-hidden hover-lift group">
+                    <div class="relative overflow-hidden h-48 bg-slate-800">
+                        <img src="sandbox:///mnt/kimi/upload/on sale.JPG" alt="Sales Performance Dashboard" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-slate-900 to-transparent"></div>
+                        <div class="absolute bottom-0 left-0 right-0 p-4">
+                            <span class="text-xs font-semibold text-purple-400 bg-purple-400/10 px-2 py-1 rounded">Business Intelligence</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white mb-2">Sales Performance Dashboard</h3>
+                        <p class="text-slate-400 text-sm mb-4">
+                            Interactive Power BI dashboard with real-time KPIs, drill-through capabilities, and automated refresh. Connected to SQL database with DAX calculations for YoY analysis.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="text-xs px-2 py-1 bg-slate-800 rounded text-slate-400">Power BI</span>
+                            <span class="text-xs px-2 py-1 bg-slate-800 rounded text-slate-400">SQL</span>
+                            <span class="text-xs px-2 py-1 bg-slate-800 rounded text-slate-400">DAX</span>
+                            <span class="text-xs px-2 py-1 bg-slate-800 rounded text-slate-400">ETL</span>
+                        </div>
+                        <div class="flex gap-2">
+                            <a href="#" class="flex-1 bg-purple-500/20 hover:bg-purple-500/30 text-purple-400 py-2 rounded-lg text-sm font-medium text-center transition-colors">
+                                View Dashboard
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 4: Geospatial -->
+                <div class="glass-card rounded-2xl overflow-hidden hover-lift group">
+                    <div class="relative overflow-hidden h-48 bg-slate-800">
+                        <div class="absolute inset-0 bg-gradient-to-br from-teal-600/20 to-emerald-600/20"></div>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i data-lucide="map" class="w-16 h-16 text-teal-400/50"></i>
+                        </div>
+                        <div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-slate-900 to-transparent">
+                            <span class="text-xs font-semibold text-teal-400 bg-teal-400/10 px-2 py-1 rounded">Geospatial</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white mb-2">Urban Land Use GIS Analysis</h3>
+                        <p class="text-slate-400 text-sm mb-4">
+                            This notebook is an exercise in the Geospatial Analysis course. You can reference the tutorial at this link.
+
+                        Introduction
+                        Built a geospatial analytics pipeline to decode the 10,000+ km migration patterns of an endangered swallow species. Leveraged Coordinate Reference System transformations and Python geoprocessing to analyze high-frequency GPS telemetry from 11 tagged birds, revealing critical stopover sites and collision-risk corridors across 15 countries. Engineered spatial intersection algorithms to quantify overlap between migration routes and protected areas, delivering actionable intelligence to conservation NGOs for targeted habitat preservation.
+
+                        
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="text-xs px-2 py-1 bg-slate-800 rounded text-slate-400">QGIS</span>
+                            <span class="text-xs px-2 py-1 bg-slate-800 rounded text-slate-400">Python</span>
+                            <span class="text-xs px-2 py-1 bg-slate-800 rounded text-slate-400">GeoPandas</span>
+                            <span class="text-xs px-2 py-1 bg-slate-800 rounded text-slate-400">Remote Sensing</span>
+                        </div>
+                        <div class="flex gap-2">
+                            <a href="https://www.kaggle.com/code/victormagadi/exercise-coordinate-reference-systems" target="_blank" class="flex-1 bg-teal-500/20 hover:bg-teal-500/30 text-teal-400 py-2 rounded-lg text-sm font-medium text-center transition-colors">
+                                View Maps
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 5: Predictive Model -->
+                <div class="glass-card rounded-2xl overflow-hidden hover-lift group">
+                    <div class="relative overflow-hidden h-48 bg-slate-800">
+                        <div class="absolute inset-0 bg-gradient-to-br from-orange-600/20 to-red-600/20"></div>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i data-lucide="brain" class="w-16 h-16 text-orange-400/50"></i>
+                        </div>
+                        <div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-slate-900 to-transparent">
+                            <span class="text-xs font-semibold text-orange-400 bg-orange-400/10 px-2 py-1 rounded">Machine Learning</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white mb-2">Customer Churn Prediction</h3>
+                        <p class="text-slate-400 text-sm mb-4">
+                            ML model using Random Forest and XGBoost to predict customer churn with 92% accuracy. Feature engineering, hyperparameter tuning, and SHAP values for interpretability.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="text-xs px-2 py-1 bg-slate-800 rounded text-slate-400">Scikit-learn</span>
+                            <span class="text-xs px-2 py-1 bg-slate-800 rounded text-slate-400">XGBoost</span>
+                            <span class="text-xs px-2 py-1 bg-slate-800 rounded text-slate-400">Pandas</span>
+                            <span class="text-xs px-2 py-1 bg-slate-800 rounded text-slate-400">SHAP</span>
+                        </div>
+                        <div class="flex gap-2">
+                            <a href="#" class="flex-1 bg-orange-500/20 hover:bg-orange-500/30 text-orange-400 py-2 rounded-lg text-sm font-medium text-center transition-colors">
+                                View Notebook
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 6: FP&A -->
+                <div class="glass-card rounded-2xl overflow-hidden hover-lift group">
+                    <div class="relative overflow-hidden h-48 bg-slate-800">
+                        <div class="absolute inset-0 bg-gradient-to-br from-pink-600/20 to-rose-600/20"></div>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i data-lucide="calculator" class="w-16 h-16 text-pink-400/50"></i>
+                        </div>
+                        <div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-slate-900 to-transparent">
+                            <span class="text-xs font-semibold text-pink-400 bg-pink-400/10 px-2 py-1 rounded">FP&A</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white mb-2">Cash Flow Forecasting System</h3>
+                        <p class="text-slate-400 text-sm mb-4">
+                            Rolling 12-month cash flow model with variance analysis and scenario planning. Automated data ingestion from multiple sources with Excel Power Query and Python.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="text-xs px-2 py-1 bg-slate-800 rounded text-slate-400">Excel</span>
+                            <span class="text-xs px-2 py-1 bg-slate-800 rounded text-slate-400">Power Query</span>
+                            <span class="text-xs px-2 py-1 bg-slate-800 rounded text-slate-400">Python</span>
+                            <span class="text-xs px-2 py-1 bg-slate-800 rounded text-slate-400">Budgeting</span>
+                        </div>
+                        <div class="flex gap-2">
+                            <a href="#" class="flex-1 bg-pink-500/20 hover:bg-pink-500/30 text-pink-400 py-2 rounded-lg text-sm font-medium text-center transition-colors">
+                                View System
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
+                <!-- Project 7: Purple Martins Bird Conservation -->
+                <div class="glass-card rounded-2xl overflow-hidden hover-lift group">
+                    <div class="relative overflow-hidden h-48 bg-slate-800">
+                        <div class="absolute inset-0 bg-gradient-to-br from-green-600/20 to-teal-600/20"></div>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <i data-lucide="bird" class="w-16 h-16 text-green-400/50"></i>
+                        </div>
+                        <div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-slate-900 to-transparent">
+                            <span class="text-xs font-semibold text-green-400 bg-green-400/10 px-2 py-1 rounded">Geospatial Analysis</span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white mb-2">Avian Migration Patterns: Geospatial Conservation Analysis</h3>
+                        <p class="text-slate-400 text-sm mb-4">
+                            Built a geospatial analytics pipeline to decode the 10,000+ km migration patterns of an endangered swallow species. Leveraged Coordinate Reference System transformations and Python geoprocessing to analyze high-frequency GPS telemetry from 11 tagged birds, revealing critical stopover sites and collision-risk corridors across 15 countries. Engineered spatial intersection algorithms to quantify overlap between migration routes and protected areas, delivering actionable intelligence to conservation NGOs for targeted habitat preservation.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="text-xs px-2 py-1 bg-slate-800 rounded text-slate-400">Geospatial Analytics</span>
+                            <span class="text-xs px-2 py-1 bg-slate-800 rounded text-slate-400">Python</span>
+                            <span class="text-xs px-2 py-1 bg-slate-800 rounded text-slate-400">GPS Telemetry</span>
+                            <span class="text-xs px-2 py-1 bg-slate-800 rounded text-slate-400">CRS Transformation</span>
+                            <span class="text-xs px-2 py-1 bg-slate-800 rounded text-slate-400">Spatial Intersection</span>
+                        </div>
+                        <div class="flex gap-2">
+                            <a href="https://www.kaggle.com/code/victormagadi/exercise-coordinate-reference-systems" target="_blank" class="flex-1 bg-green-500/20 hover:bg-green-500/30 text-green-400 py-2 rounded-lg text-sm font-medium text-center transition-colors">
+                                View Analysis
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Expertise & Certifications -->
+    <section id="expertise" class="py-20 bg-slate-900/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-16">
+                <!-- Core Competencies -->
+                <div>
+                    <h2 class="text-3xl font-bold mb-8">Core <span class="gradient-text">Competencies</span></h2>
+                    
+                    <div class="space-y-6">
+                        <div class="glass-card p-6 rounded-xl">
+                            <div class="flex items-start gap-4">
+                                <div class="w-12 h-12 bg-emerald-500/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                                    <i data-lucide="database" class="w-6 h-6 text-emerald-400"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-white mb-2">Data Engineering & Analysis</h4>
+                                    <p class="text-sm text-slate-400">ETL processes, data cleaning, wrangling, and exploratory data analysis using Python (Pandas, NumPy) and SQL.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- NEW: Data Science Section -->
+                        <div class="glass-card p-6 rounded-xl border border-purple-500/30 bg-purple-500/5">
+                            <div class="flex items-start gap-4">
+                                <div class="w-12 h-12 bg-purple-500/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                                    <i data-lucide="brain" class="w-6 h-6 text-purple-400"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-white mb-2">Data Science & Machine Learning</h4>
+                                    <p class="text-sm text-slate-400">Predictive modeling, statistical analysis, hypothesis testing, and ML algorithms using Scikit-learn, XGBoost, and TensorFlow. Feature engineering and model optimization.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="glass-card p-6 rounded-xl">
+                            <div class="flex items-start gap-4">
+                                <div class="w-12 h-12 bg-blue-500/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                                    <i data-lucide="line-chart" class="w-6 h-6 text-blue-400"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-white mb-2">Financial Modeling & FP&A</h4>
+                                    <p class="text-sm text-slate-400">3-statement modeling, DCF valuation, budgeting, forecasting, and variance analysis with advanced Excel.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="glass-card p-6 rounded-xl">
+                            <div class="flex items-start gap-4">
+                                <div class="w-12 h-12 bg-pink-500/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                                    <i data-lucide="pie-chart" class="w-6 h-6 text-pink-400"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-white mb-2">Business Intelligence</h4>
+                                    <p class="text-sm text-slate-400">Dashboard creation in Power BI and Tableau, KPI development, and automated reporting solutions.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="glass-card p-6 rounded-xl">
+                            <div class="flex items-start gap-4">
+                                <div class="w-12 h-12 bg-teal-500/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                                    <i data-lucide="map" class="w-6 h-6 text-teal-400"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-white mb-2">Geospatial Intelligence</h4>
+                                    <p class="text-sm text-slate-400">GIS analysis, spatial data processing, AutoCAD mapping, and remote sensing for location analytics.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Certifications -->
+                <div>
+                    <h2 class="text-3xl font-bold mb-8">Certifications & <span class="gradient-text">Credentials</span></h2>
+                    <div class="space-y-4">
+                        <div class="glass-card p-5 rounded-xl flex items-start gap-4">
+                            <div class="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <i data-lucide="award" class="w-6 h-6 text-white"></i>
+                            </div>
+                            <div class="flex-1">
+                                <div class="flex justify-between items-start">
+                                    <div>
+                                        <h4 class="font-bold text-white">Financial Modeling & Valuation Analyst (FMVA)</h4>
+                                        <p class="text-sm text-slate-400">Corporate Finance Institute (CFI)</p>
+                                    </div>
+                                    <span class="text-xs text-emerald-400 bg-emerald-400/10 px-2 py-1 rounded">2022</span>
+                                </div>
+                                <p class="text-xs text-slate-500 mt-2">Advanced financial modeling, valuation techniques, and strategic planning</p>
+                            </div>
+                        </div>
+
+                        <div class="glass-card p-5 rounded-xl flex items-start gap-4">
+                            <div class="w-12 h-12 bg-emerald-600 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <i data-lucide="code" class="w-6 h-6 text-white"></i>
+                            </div>
+                            <div class="flex-1">
+                                <div class="flex justify-between items-start">
+                                    <div>
+                                        <h4 class="font-bold text-white">Data Science & Data Analytics</h4>
+                                        <p class="text-sm text-slate-400">ALX Academy</p>
+                                    </div>
+                                    <span class="text-xs text-emerald-400 bg-emerald-400/10 px-2 py-1 rounded">2025</span>
+                                </div>
+                                <p class="text-xs text-slate-500 mt-2">Python, SQL, Power BI, Machine Learning fundamentals</p>
+                            </div>
+                        </div>
+
+                        <div class="glass-card p-5 rounded-xl flex items-start gap-4">
+                            <div class="w-12 h-12 bg-purple-600 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <i data-lucide="user-check" class="w-6 h-6 text-white"></i>
+                            </div>
+                            <div class="flex-1">
+                                <div class="flex justify-between items-start">
+                                    <div>
+                                        <h4 class="font-bold text-white">Virtual Assistant (Honors)</h4>
+                                        <p class="text-sm text-slate-400">ALX Academy</p>
+                                    </div>
+                                    <span class="text-xs text-emerald-400 bg-emerald-400/10 px-2 py-1 rounded">2022</span>
+                                </div>
+                                <p class="text-xs text-slate-500 mt-2">Administrative excellence, CRM management, operational support</p>
+                            </div>
+                        </div>
+
+                        <div class="glass-card p-5 rounded-xl flex items-start gap-4">
+                            <div class="w-12 h-12 bg-teal-600 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <i data-lucide="globe" class="w-6 h-6 text-white"></i>
+                            </div>
+                            <div class="flex-1">
+                                <div class="flex justify-between items-start">
+                                    <div>
+                                        <h4 class="font-bold text-white">Advanced Diploma in GIS</h4>
+                                        <p class="text-sm text-slate-400">Alison</p>
+                                    </div>
+                                    <span class="text-xs text-emerald-400 bg-emerald-400/10 px-2 py-1 rounded">2023</span>
+                                </div>
+                                <p class="text-xs text-slate-500 mt-2">Geographic Information Systems and spatial analysis</p>
+                            </div>
+                        </div>
+
+                        <div class="glass-card p-5 rounded-xl flex items-start gap-4">
+                            <div class="w-12 h-12 bg-orange-600 rounded-lg flex items-center justify-center flex-shrink-0">
+                                <i data-lucide="file-code" class="w-6 h-6 text-white"></i>
+                            </div>
+                            <div class="flex-1">
+                                <div class="flex justify-between items-start">
+                                    <div>
+                                        <h4 class="font-bold text-white">Scientific Computing with Python</h4>
+                                        <p class="text-sm text-slate-400">freeCodeCamp</p>
+                                    </div>
+                                    <span class="text-xs text-emerald-400 bg-emerald-400/10 px-2 py-1 rounded">2023</span>
+                                </div>
+                                <p class="text-xs text-slate-500 mt-2">Data analysis, algorithms, and scientific computing</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-emerald-500 via-blue-500 to-purple-500"></div>
+        
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Let's Analyze <span class="gradient-text">Together</span></h2>
+                <p class="text-slate-400">Ready to transform your data into actionable insights? Let's connect.</p>
+            </div>
+
+            <div class="glass-card rounded-3xl p-8 md:p-12">
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="space-y-6">
+                        <h3 class="text-xl font-bold text-white mb-6">Contact Information</h3>
+                        
+                        <a href="mailto:magadivictor@gmail.com" class="flex items-center gap-4 group">
+                            <div class="w-12 h-12 bg-slate-800 rounded-xl flex items-center justify-center group-hover:bg-emerald-500/20 transition-colors">
+                                <i data-lucide="mail" class="w-5 h-5 text-emerald-400"></i>
+                            </div>
+                            <div>
+                                <p class="text-sm text-slate-500">Email</p>
+                                <p class="text-white group-hover:text-emerald-400 transition-colors">magadivictor@gmail.com</p>
+                            </div>
+                        </a>
+
+                        <a href="tel:+254742733389" class="flex items-center gap-4 group">
+                            <div class="w-12 h-12 bg-slate-800 rounded-xl flex items-center justify-center group-hover:bg-blue-500/20 transition-colors">
+                                <i data-lucide="phone" class="w-5 h-5 text-blue-400"></i>
+                            </div>
+                            <div>
+                                <p class="text-sm text-slate-500">Phone</p>
+                                <p class="text-white group-hover:text-blue-400 transition-colors">+254 742 733 389</p>
+                            </div>
+                        </a>
+
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 bg-slate-800 rounded-xl flex items-center justify-center">
+                                <i data-lucide="map-pin" class="w-5 h-5 text-purple-400"></i>
+                            </div>
+                            <div>
+                                <p class="text-sm text-slate-500">Location</p>
+                                <p class="text-white">Nairobi, Kenya (Remote Available)</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="space-y-6">
+                        <h3 class="text-xl font-bold text-white mb-6">Professional Profiles</h3>
+                        
+                        <a href="https://linkedin.com/in/victor-magadi-2a1a2b170" target="_blank" class="flex items-center gap-4 group">
+                            <div class="w-12 h-12 bg-slate-800 rounded-xl flex items-center justify-center group-hover:bg-blue-600/20 transition-colors">
+                                <i data-lucide="linkedin" class="w-5 h-5 text-blue-500"></i>
+                            </div>
+                            <div>
+                                <p class="text-sm text-slate-500">LinkedIn</p>
+                                <p class="text-white group-hover:text-blue-400 transition-colors">linkedin.com/in/victor-magadi</p>
+                            </div>
+                        </a>
+
+                        <a href="https://github.com/VictorMagadi" target="_blank" class="flex items-center gap-4 group">
+                            <div class="w-12 h-12 bg-slate-800 rounded-xl flex items-center justify-center group-hover:bg-slate-600/50 transition-colors">
+                                <i data-lucide="github" class="w-5 h-5 text-white"></i>
+                            </div>
+                            <div>
+                                <p class="text-sm text-slate-500">GitHub</p>
+                                <p class="text-white group-hover:text-slate-300 transition-colors">github.com/VictorMagadi</p>
+                            </div>
+                        </a>
+
+                        <a href="#" target="_blank" class="flex items-center gap-4 group">
+                            <div class="w-12 h-12 bg-slate-800 rounded-xl flex items-center justify-center group-hover:bg-emerald-500/20 transition-colors">
+                                <i data-lucide="download" class="w-5 h-5 text-emerald-400"></i>
+                            </div>
+                            <div>
+                                <p class="text-sm text-slate-500">Resume</p>
+                                <p class="text-white group-hover:text-emerald-400 transition-colors">Download CV (PDF)</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="mt-10 pt-8 border-t border-slate-700 text-center">
+                    <p class="text-slate-400 text-sm italic">
+                        "Data is the new oil, but unlike oil, data is not scarce. It's the ability to refine it into insights that creates value."
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 bg-slate-950 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="flex items-center gap-2">
+                <div class="w-6 h-6 bg-gradient-to-br from-emerald-400 to-blue-500 rounded flex items-center justify-center">
+                    <i data-lucide="bar-chart-2" class="w-3 h-3 text-white"></i>
+                </div>
+                <span class="text-slate-400 text-sm">© 2025 Victor Magadi. Data-Driven Professional.</span>
+            </div>
+            
+            <div class="flex gap-6">
+                <a href="https://linkedin.com/in/victor-magadi-2a1a2b170" target="_blank" class="text-slate-400 hover:text-white transition-colors">
+                    <i data-lucide="linkedin" class="w-5 h-5"></i>
+                </a>
+                <a href="https://github.com/VictorMagadi" target="_blank" class="text-slate-400 hover:text-white transition-colors">
+                    <i data-lucide="github" class="w-5 h-5"></i>
+                </a>
+                <a href="mailto:magadivictor@gmail.com" class="text-slate-400 hover:text-white transition-colors">
+                    <i data-lucide="mail" class="w-5 h-5"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu when clicking a link
+        mobileMenu.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Navbar background on scroll
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('bg-slate-900/95', 'backdrop-blur-md', 'shadow-lg');
+            } else {
+                navbar.classList.remove('bg-slate-900/95', 'backdrop-blur-md', 'shadow-lg');
+            }
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationPlayState = 'running';
+                    entry.target.classList.add('animate-on-scroll');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.hover-lift').forEach((el) => {
+            el.style.opacity = '0';
+            el.style.animationPlayState = 'paused';
+            observer.observe(el);
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+<div class="glass-card project-card">
+    <img src="images/maji-ndogo-project.png" alt="Maji Ndogo Water Access Analysis">
+    <h3 class="project-title">Maji Ndogo Water Access Analysis</h3>
+    <p class="project-description">Comprehensive analysis of water access and distribution in rural communities using SQL queries and Power BI dashboards</p>
+    <p class="project-technologies">Technologies: SQL, Power BI, Data Visualization, Water Resource Analysis</p>
+</div>
 <img src="images/sales-performance-dashboard.png" alt="Sales Performance Dashboard">
