@@ -21,22 +21,27 @@
         .animate-on-scroll { opacity: 0; animation: fadeInUp 0.8s ease forwards; }
         .stagger-1 { animation-delay: 0.1s; } .stagger-2 { animation-delay: 0.2s; } .stagger-3 { animation-delay: 0.3s; } .stagger-4 { animation-delay: 0.4s; }
         .metric-card { background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(52, 211, 153, 0.3); }
-        /* simple lightbox styling */
+        /* lightbox styling */
         .gallery-img { cursor: pointer; transition: opacity 0.2s; }
         .gallery-img:hover { opacity: 0.9; }
-        #lightbox { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.9); z-index: 999; align-items: center; justify-content: center; }
+        #lightbox { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.95); z-index: 999; align-items: center; justify-content: center; flex-direction: column; }
         #lightbox.active { display: flex; }
-        #lightbox img { max-width: 90%; max-height: 80%; border-radius: 1rem; }
-        #lightbox .close { position: absolute; top: 2rem; right: 2rem; color: white; font-size: 2rem; cursor: pointer; }
+        #lightbox .close { position: absolute; top: 1rem; right: 2rem; color: white; font-size: 2.5rem; cursor: pointer; z-index: 1000; }
+        #lightbox-content { width: 90%; max-width: 1000px; aspect-ratio: 16/9; display: flex; align-items: center; justify-content: center; }
+        .video-embed { width: 100%; height: 100%; border: none; border-radius: 0.75rem; }
+        #lightbox-content img { max-width: 100%; max-height: 80vh; border-radius: 0.75rem; object-fit: contain; }
+        .play-icon { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,0.3); color: white; font-size: 3rem; }
+        /* kept for compatibility */
+        #lightbox .close.alt-style { position: absolute; top: 2rem; right: 2rem; font-size: 2rem; }
     </style>
     <base target="_blank">
 </head>
 <body class="antialiased overflow-x-hidden">
 
-<!-- Lightbox container (simple) -->
-<div id="lightbox" onclick="this.classList.remove('active')">
-    <span class="close" onclick="document.getElementById('lightbox').classList.remove('active')">&times;</span>
-    <img id="lightbox-img" src="" alt="">
+<!-- Lightbox container -->
+<div id="lightbox" onclick="if(event.target === this) closeLightbox()">
+    <span class="close" onclick="closeLightbox()">&times;</span>
+    <div id="lightbox-content"></div>
 </div>
 
 <!-- Navigation -->
@@ -127,7 +132,7 @@
     </div>
 </section>
 
-<!-- Experience Section -->
+<!-- Experience Section (all 5 roles retained) -->
 <section id="experience" class="py-20 bg-slate-900/50">
     <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-16"><h2 class="text-3xl md:text-4xl font-bold mb-4">Professional <span class="gradient-text">Experience</span></h2><p class="text-slate-400">Data-centric roles across finance, operations, and geospatial intelligence</p></div>
@@ -137,93 +142,59 @@
             <div class="relative pl-12 md:pl-20"><div class="absolute left-0 w-10 h-10 bg-emerald-500 rounded-full border-4 border-slate-900 flex items-center justify-center z-10"><i data-lucide="activity" class="w-4 h-4 text-white"></i></div><div class="data-card p-6 rounded-2xl hover-lift"><div class="flex flex-col md:flex-row md:justify-between md:items-start mb-2"><div><h3 class="text-xl font-bold text-white">Program Data Analyst & Impact Coordinator</h3><p class="text-emerald-400 font-medium">Vijana Amani Pamoja</p></div><span class="text-sm text-slate-500 mt-2 md:mt-0">Jul 2024 - Present</span></div><p class="text-slate-400 text-sm mb-3">Nairobi County, Kenya</p><ul class="text-slate-300 text-sm leading-relaxed space-y-2"><li class="flex items-start gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-emerald-400 mt-0.5 flex-shrink-0"></i><span>Maintain participant tracking databases, monitor engagement metrics for 200+ youth.</span></li><li class="flex items-start gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-emerald-400 mt-0.5 flex-shrink-0"></i><span>Create monthly dashboards using Excel and Power BI to visualize program impact.</span></li><li class="flex items-start gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-emerald-400 mt-0.5 flex-shrink-0"></i><span>Conduct statistical analysis on behavioral data to optimize interventions.</span></li></ul><div class="mt-4 flex flex-wrap gap-2"><span class="text-xs px-2 py-1 bg-slate-800 rounded text-slate-400">Excel</span><span class="text-xs px-2 py-1 bg-slate-800 rounded text-slate-400">Power BI</span><span class="text-xs px-2 py-1 bg-slate-800 rounded text-slate-400">Data Collection</span><span class="text-xs px-2 py-1 bg-slate-800 rounded text-slate-400">Impact Metrics</span></div></div></div>
             <!-- Role 2 -->
             <div class="relative pl-12 md:pl-20"><div class="absolute left-0 w-10 h-10 bg-blue-500 rounded-full border-4 border-slate-900 flex items-center justify-center z-10"><i data-lucide="home" class="w-4 h-4 text-white"></i></div><div class="data-card p-6 rounded-2xl hover-lift"><div class="flex flex-col md:flex-row md:justify-between md:items-start mb-2"><div><h3 class="text-xl font-bold text-white">Real Estate Market Analyst</h3><p class="text-blue-400 font-medium">Ravi Homes Kenya</p></div><span class="text-sm text-slate-500 mt-2 md:mt-0">Apr 2023 - Dec 2023</span></div><p class="text-slate-400 text-sm mb-3">Nairobi County, Kenya</p><ul class="text-slate-300 text-sm leading-relaxed space-y-2"><li class="flex items-start gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-blue-400 mt-0.5 flex-shrink-0"></i><span>Analyzed property market trends to identify investment opportunities.</span></li><li class="flex items-start gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-blue-400 mt-0.5 flex-shrink-0"></i><span>Built CRM analytics tracking lead conversion and customer acquisition costs.</span></li><li class="flex items-start gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-blue-400 mt-0.5 flex-shrink-0"></i><span>Developed automated valuation templates, reducing assessment time by 30%.</span></li></ul><div class="mt-4 flex flex-wrap gap-2"><span class="text-xs px-2 py-1 bg-slate-800 rounded text-slate-400">Market Analysis</span><span class="text-xs px-2 py-1 bg-slate-800 rounded text-slate-400">CRM Analytics</span><span class="text-xs px-2 py-1 bg-slate-800 rounded text-slate-400">Excel Modeling</span></div></div></div>
-            <!-- Role 3,4,5 condensed for brevity (same structure) -->
+            <!-- Role 3 -->
             <div class="relative pl-12 md:pl-20"><div class="absolute left-0 w-10 h-10 bg-purple-500 rounded-full border-4 border-slate-900 flex items-center justify-center z-10"><i data-lucide="shield" class="w-4 h-4 text-white"></i></div><div class="data-card p-6 rounded-2xl hover-lift"><div class="flex flex-col md:flex-row md:justify-between md:items-start mb-2"><div><h3 class="text-xl font-bold text-white">Financial Data Analyst</h3><p class="text-purple-400 font-medium">Achievo Limited</p></div><span class="text-sm text-slate-500 mt-2 md:mt-0">Aug 2021 - Nov 2021</span></div><p class="text-slate-400 text-sm mb-3">Nairobi County, Kenya</p><ul class="text-slate-300 text-sm leading-relaxed space-y-2"><li class="flex items-start gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-purple-400 mt-0.5 flex-shrink-0"></i><span>Performed financial audits and variance analysis, identifying 15% cost savings.</span></li><li class="flex items-start gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-purple-400 mt-0.5 flex-shrink-0"></i><span>Reconciled complex datasets, built automated bookkeeping in QuickBooks/Excel.</span></li><li class="flex items-start gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-purple-400 mt-0.5 flex-shrink-0"></i><span>Created risk assessment models to detect anomalies and prevent losses.</span></li></ul><div class="mt-4 flex flex-wrap gap-2"><span class="text-xs px-2 py-1 bg-slate-800 rounded text-slate-400">Financial Modeling</span><span class="text-xs px-2 py-1 bg-slate-800 rounded text-slate-400">Risk Analysis</span><span class="text-xs px-2 py-1 bg-slate-800 rounded text-slate-400">QuickBooks</span><span class="text-xs px-2 py-1 bg-slate-800 rounded text-slate-400">Audit Analytics</span></div></div></div>
+            <!-- Role 4 -->
             <div class="relative pl-12 md:pl-20"><div class="absolute left-0 w-10 h-10 bg-orange-500 rounded-full border-4 border-slate-900 flex items-center justify-center z-10"><i data-lucide="truck" class="w-4 h-4 text-white"></i></div><div class="data-card p-6 rounded-2xl hover-lift"><div class="flex flex-col md:flex-row md:justify-between md:items-start mb-2"><div><h3 class="text-xl font-bold text-white">Operations Data Analyst</h3><p class="text-orange-400 font-medium">Cleo Pradox Supplies Kenya Ltd</p></div><span class="text-sm text-slate-500 mt-2 md:mt-0">Jun 2020 - Jul 2021</span></div><p class="text-slate-400 text-sm mb-3">Nairobi County, Kenya</p><ul class="text-slate-300 text-sm leading-relaxed space-y-2"><li class="flex items-start gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-orange-400 mt-0.5 flex-shrink-0"></i><span>Optimized supply chain logistics, improving delivery efficiency by 40%.</span></li><li class="flex items-start gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-orange-400 mt-0.5 flex-shrink-0"></i><span>Managed CRM data architecture and automated performance reporting.</span></li><li class="flex items-start gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-orange-400 mt-0.5 flex-shrink-0"></i><span>Established KPI dashboards for real-time operational monitoring.</span></li></ul><div class="mt-4 flex flex-wrap gap-2"><span class="text-xs px-2 py-1 bg-slate-800 rounded text-slate-400">Supply Chain Analytics</span><span class="text-xs px-2 py-1 bg-slate-800 rounded text-slate-400">KPI Dashboards</span><span class="text-xs px-2 py-1 bg-slate-800 rounded text-slate-400">Process Optimization</span></div></div></div>
+            <!-- Role 5 -->
             <div class="relative pl-12 md:pl-20"><div class="absolute left-0 w-10 h-10 bg-teal-500 rounded-full border-4 border-slate-900 flex items-center justify-center z-10"><i data-lucide="map" class="w-4 h-4 text-white"></i></div><div class="data-card p-6 rounded-2xl hover-lift"><div class="flex flex-col md:flex-row md:justify-between md:items-start mb-2"><div><h3 class="text-xl font-bold text-white">Geospatial Data Specialist</h3><p class="text-teal-400 font-medium">Geometric Construction Company Ltd</p></div><span class="text-sm text-slate-500 mt-2 md:mt-0">Feb 2020 - Jun 2020</span></div><p class="text-slate-400 text-sm mb-3">Nairobi, Kenya</p><ul class="text-slate-300 text-sm leading-relaxed space-y-2"><li class="flex items-start gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-teal-400 mt-0.5 flex-shrink-0"></i><span>Processed spatial datasets using AutoCAD/GIS for precision mapping.</span></li><li class="flex items-start gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-teal-400 mt-0.5 flex-shrink-0"></i><span>Maintained geodetic databases and performed spatial analysis.</span></li><li class="flex items-start gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-teal-400 mt-0.5 flex-shrink-0"></i><span>Developed validation protocols ensuring 99.8% data accuracy.</span></li></ul><div class="mt-4 flex flex-wrap gap-2"><span class="text-xs px-2 py-1 bg-slate-800 rounded text-slate-400">AutoCAD</span><span class="text-xs px-2 py-1 bg-slate-800 rounded text-slate-400">GIS</span><span class="text-xs px-2 py-1 bg-slate-800 rounded text-slate-400">Spatial Analysis</span><span class="text-xs px-2 py-1 bg-slate-800 rounded text-slate-400">Data Validation</span></div></div></div>
         </div>
     </div>
 </section>
 
-<!-- Projects Section (detailed cards) -->
+<!-- Projects Section (removed Urban GIS & Churn Prediction; updated Cash Flow link) -->
 <section id="projects" class="py-20">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-16"><h2 class="text-3xl md:text-4xl font-bold mb-4">Featured <span class="gradient-text">Projects</span></h2><p class="text-slate-400">End-to-end analytics solutions demonstrating technical proficiency</p></div>
+        <div class="text-center mb-16"><h2 class="text-3xl md:text-4xl font-bold mb-4">Featured <span class="gradient-text">Projects</span></h2><p class="text-slate-400">End-to-end analytics solutions demonstrating technical proficiency — video walkthroughs included</p></div>
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <!-- 1 Kiva -->
+            <!-- Kiva (unchanged) -->
             <div class="glass-card rounded-2xl overflow-hidden hover-lift group"><div class="relative overflow-hidden h-48 bg-slate-800"><div class="absolute inset-0 bg-gradient-to-br from-emerald-600/20 to-blue-600/20"></div><div class="absolute inset-0 flex items-center justify-center"><i data-lucide="pie-chart" class="w-16 h-16 text-emerald-400/50"></i></div><div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-slate-900 to-transparent"><span class="text-xs font-semibold text-emerald-400 bg-emerald-400/10 px-2 py-1 rounded">Data Analysis</span></div></div><div class="p-6"><h3 class="text-xl font-bold text-white mb-2">Kiva Microloans Impact Analysis</h3><p class="text-slate-400 text-sm mb-4">EDA of Kiva lending data (Philippines) using Python/Pandas – geographic patterns, sector performance, repayment trends.</p><div class="flex flex-wrap gap-2 mb-4"><span class="text-xs px-2 py-1 bg-slate-800 rounded text-slate-400">Python</span><span class="text-xs px-2 py-1 bg-slate-800 rounded text-slate-400">Pandas</span><span class="text-xs px-2 py-1 bg-slate-800 rounded text-slate-400">Matplotlib</span><span class="text-xs px-2 py-1 bg-slate-800 rounded text-slate-400">Data Cleaning</span></div><div class="flex gap-2"><a href="https://www.kaggle.com/code/victormagadi/exercise-your-first-map" target="_blank" class="flex-1 bg-emerald-500/20 hover:bg-emerald-500/30 text-emerald-400 py-2 rounded-lg text-sm font-medium text-center transition-colors">View Analysis</a></div></div></div>
-            <!-- 2 Financial Model -->
-            <div class="glass-card rounded-2xl overflow-hidden hover-lift group"><div class="relative overflow-hidden h-48 bg-slate-800"><div class="absolute inset-0 bg-gradient-to-br from-blue-600/20 to-purple-600/20"></div><div class="absolute inset-0 flex items-center justify-center"><i data-lucide="trending-up" class="w-16 h-16 text-blue-400/50"></i></div><div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-slate-900 to-transparent"><span class="text-xs font-semibold text-blue-400 bg-blue-400/10 px-2 py-1 rounded">Financial Modeling</span></div></div><div class="p-6"><h3 class="text-xl font-bold text-white mb-2">3-Statement Financial Model</h3><p class="text-slate-400 text-sm mb-4">Integrated IS/BS/CF with DCF valuation, sensitivity analysis, Monte Carlo simulation for risk assessment.</p><div class="flex flex-wrap gap-2 mb-4"><span class="text-xs px-2 py-1 bg-slate-800 rounded text-slate-400">Excel</span><span class="text-xs px-2 py-1 bg-slate-800 rounded text-slate-400">VBA</span><span class="text-xs px-2 py-1 bg-slate-800 rounded text-slate-400">Forecasting</span><span class="text-xs px-2 py-1 bg-slate-800 rounded text-slate-400">Valuation</span></div><div class="flex gap-2"><a href="#" class="flex-1 bg-blue-500/20 hover:bg-blue-500/30 text-blue-400 py-2 rounded-lg text-sm font-medium text-center transition-colors">View Model</a></div></div></div>
-            <!-- 3 Power BI Dashboard -->
-            <div class="glass-card rounded-2xl overflow-hidden hover-lift group"><div class="relative overflow-hidden h-48 bg-slate-800"><div class="absolute inset-0 bg-gradient-to-br from-purple-600/20 to-pink-600/20 flex items-center justify-center"><i data-lucide="bar-chart-3" class="w-16 h-16 text-purple-400/50"></i></div><div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-slate-900 to-transparent"><span class="text-xs font-semibold text-purple-400 bg-purple-400/10 px-2 py-1 rounded">Business Intelligence</span></div></div><div class="p-6"><h3 class="text-xl font-bold text-white mb-2">Sales Performance Dashboard</h3><p class="text-slate-400 text-sm mb-4">Interactive Power BI dashboard with real-time KPIs, drill-through, DAX, SQL connection for YoY analysis.</p><div class="flex flex-wrap gap-2 mb-4"><span class="text-xs px-2 py-1 bg-slate-800 rounded text-slate-400">Power BI</span><span class="text-xs px-2 py-1 bg-slate-800 rounded text-slate-400">SQL</span><span class="text-xs px-2 py-1 bg-slate-800 rounded text-slate-400">DAX</span><span class="text-xs px-2 py-1 bg-slate-800 rounded text-slate-400">ETL</span></div><div class="flex gap-2"><a href="#" class="flex-1 bg-purple-500/20 hover:bg-purple-500/30 text-purple-400 py-2 rounded-lg text-sm font-medium text-center transition-colors">View Dashboard</a></div></div></div>
-            <!-- 4 Geospatial Urban -->
-            <div class="glass-card rounded-2xl overflow-hidden hover-lift group"><div class="relative overflow-hidden h-48 bg-slate-800"><div class="absolute inset-0 bg-gradient-to-br from-teal-600/20 to-emerald-600/20"></div><div class="absolute inset-0 flex items-center justify-center"><i data-lucide="map" class="w-16 h-16 text-teal-400/50"></i></div><div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-slate-900 to-transparent"><span class="text-xs font-semibold text-teal-400 bg-teal-400/10 px-2 py-1 rounded">Geospatial</span></div></div><div class="p-6"><h3 class="text-xl font-bold text-white mb-2">Urban Land Use GIS Analysis</h3><p class="text-slate-400 text-sm mb-4">Geospatial pipeline using CRS transformations, GeoPandas to analyze swallow migration patterns across 15 countries.</p><div class="flex flex-wrap gap-2 mb-4"><span class="text-xs px-2 py-1 bg-slate-800 rounded text-slate-400">QGIS</span><span class="text-xs px-2 py-1 bg-slate-800 rounded text-slate-400">Python</span><span class="text-xs px-2 py-1 bg-slate-800 rounded text-slate-400">GeoPandas</span><span class="text-xs px-2 py-1 bg-slate-800 rounded text-slate-400">Remote Sensing</span></div><div class="flex gap-2"><a href="https://www.kaggle.com/code/victormagadi/exercise-coordinate-reference-systems" target="_blank" class="flex-1 bg-teal-500/20 hover:bg-teal-500/30 text-teal-400 py-2 rounded-lg text-sm font-medium text-center transition-colors">View Maps</a></div></div></div>
-            <!-- 5 Predictive Model -->
-            <div class="glass-card rounded-2xl overflow-hidden hover-lift group"><div class="relative overflow-hidden h-48 bg-slate-800"><div class="absolute inset-0 bg-gradient-to-br from-orange-600/20 to-red-600/20"></div><div class="absolute inset-0 flex items-center justify-center"><i data-lucide="brain" class="w-16 h-16 text-orange-400/50"></i></div><div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-slate-900 to-transparent"><span class="text-xs font-semibold text-orange-400 bg-orange-400/10 px-2 py-1 rounded">Machine Learning</span></div></div><div class="p-6"><h3 class="text-xl font-bold text-white mb-2">Customer Churn Prediction</h3><p class="text-slate-400 text-sm mb-4">Random Forest / XGBoost model with 92% accuracy, feature engineering, SHAP for interpretability.</p><div class="flex flex-wrap gap-2 mb-4"><span class="text-xs px-2 py-1 bg-slate-800 rounded text-slate-400">Scikit-learn</span><span class="text-xs px-2 py-1 bg-slate-800 rounded text-slate-400">XGBoost</span><span class="text-xs px-2 py-1 bg-slate-800 rounded text-slate-400">Pandas</span><span class="text-xs px-2 py-1 bg-slate-800 rounded text-slate-400">SHAP</span></div><div class="flex gap-2"><a href="#" class="flex-1 bg-orange-500/20 hover:bg-orange-500/30 text-orange-400 py-2 rounded-lg text-sm font-medium text-center transition-colors">View Notebook</a></div></div></div>
-            <!-- 6 FP&A Cash Flow -->
-            <div class="glass-card rounded-2xl overflow-hidden hover-lift group"><div class="relative overflow-hidden h-48 bg-slate-800"><div class="absolute inset-0 bg-gradient-to-br from-pink-600/20 to-rose-600/20"></div><div class="absolute inset-0 flex items-center justify-center"><i data-lucide="calculator" class="w-16 h-16 text-pink-400/50"></i></div><div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-slate-900 to-transparent"><span class="text-xs font-semibold text-pink-400 bg-pink-400/10 px-2 py-1 rounded">FP&A</span></div></div><div class="p-6"><h3 class="text-xl font-bold text-white mb-2">Cash Flow Forecasting System</h3><p class="text-slate-400 text-sm mb-4">Rolling 12-month model with variance analysis, scenario planning; automated ingestion via Power Query & Python.</p><div class="flex flex-wrap gap-2 mb-4"><span class="text-xs px-2 py-1 bg-slate-800 rounded text-slate-400">Excel</span><span class="text-xs px-2 py-1 bg-slate-800 rounded text-slate-400">Power Query</span><span class="text-xs px-2 py-1 bg-slate-800 rounded text-slate-400">Python</span><span class="text-xs px-2 py-1 bg-slate-800 rounded text-slate-400">Budgeting</span></div><div class="flex gap-2"><a href="#" class="flex-1 bg-pink-500/20 hover:bg-pink-500/30 text-pink-400 py-2 rounded-lg text-sm font-medium text-center transition-colors">View System</a></div></div></div>
-            <!-- 7 Bird Conservation -->
+            <!-- Financial Model (video + Colab) -->
+            <div class="glass-card rounded-2xl overflow-hidden hover-lift group" id="financial-model-card"><div class="relative overflow-hidden h-48 bg-slate-800"><div class="absolute inset-0 bg-gradient-to-br from-blue-600/20 to-purple-600/20 flex items-center justify-center"><i data-lucide="video" class="w-16 h-16 text-blue-400/50"></i></div><div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-slate-900 to-transparent"><span class="text-xs font-semibold text-blue-400 bg-blue-400/10 px-2 py-1 rounded">Financial Modeling + Video</span></div></div><div class="p-6"><h3 class="text-xl font-bold text-white mb-2">3-Statement Financial Model</h3><p class="text-slate-400 text-sm mb-4">Integrated IS/BS/CF with DCF valuation, sensitivity analysis, Monte Carlo simulation. <span class="text-emerald-400">(Video walkthrough & Colab notebook)</span></p><div class="flex flex-wrap gap-2 mb-4"><span class="text-xs px-2 py-1 bg-slate-800 rounded text-slate-400">Excel</span><span class="text-xs px-2 py-1 bg-slate-800 rounded text-slate-400">VBA</span><span class="text-xs px-2 py-1 bg-slate-800 rounded text-slate-400">Forecasting</span><span class="text-xs px-2 py-1 bg-slate-800 rounded text-slate-400">Valuation</span></div><div class="flex gap-2"><a href="javascript:void(0)" onclick="openVideoLightbox('https://www.loom.com/embed/484fbada17184f70abb34a015fd8f3c5')" class="flex-1 bg-blue-500/20 hover:bg-blue-500/30 text-blue-400 py-2 rounded-lg text-sm font-medium text-center transition-colors">Watch Video</a><a href="https://colab.research.google.com/drive/1GH8zz61VkdVwFUMru62AZcC5GvWquKbJ?usp=sharing" target="_blank" class="flex-1 bg-purple-500/20 hover:bg-purple-500/30 text-purple-400 py-2 rounded-lg text-sm font-medium text-center transition-colors">Colab</a></div></div></div>
+            <!-- Sales Dashboard (video) -->
+            <div class="glass-card rounded-2xl overflow-hidden hover-lift group" id="sales-dashboard-card"><div class="relative overflow-hidden h-48 bg-slate-800"><div class="absolute inset-0 bg-gradient-to-br from-purple-600/20 to-pink-600/20 flex items-center justify-center"><i data-lucide="video" class="w-16 h-16 text-purple-400/50"></i></div><div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-slate-900 to-transparent"><span class="text-xs font-semibold text-purple-400 bg-purple-400/10 px-2 py-1 rounded">Business Intelligence + Video</span></div></div><div class="p-6"><h3 class="text-xl font-bold text-white mb-2">Sales Performance Dashboard</h3><p class="text-slate-400 text-sm mb-4">Interactive Power BI dashboard with real-time KPIs, drill-through, DAX, SQL connection for YoY analysis. <span class="text-emerald-400">(Video walkthrough)</span></p><div class="flex flex-wrap gap-2 mb-4"><span class="text-xs px-2 py-1 bg-slate-800 rounded text-slate-400">Power BI</span><span class="text-xs px-2 py-1 bg-slate-800 rounded text-slate-400">SQL</span><span class="text-xs px-2 py-1 bg-slate-800 rounded text-slate-400">DAX</span><span class="text-xs px-2 py-1 bg-slate-800 rounded text-slate-400">ETL</span></div><div class="flex gap-2"><a href="javascript:void(0)" onclick="openVideoLightbox('https://www.loom.com/embed/6fd766cf409c47cf9398a8589a5b2a6f')" class="flex-1 bg-purple-500/20 hover:bg-purple-500/30 text-purple-400 py-2 rounded-lg text-sm font-medium text-center transition-colors">Watch Video</a><a href="#" class="flex-1 bg-slate-700/50 hover:bg-slate-700 text-slate-300 py-2 rounded-lg text-sm font-medium text-center transition-colors">Details</a></div></div></div>
+            <!-- Cash Flow Forecasting (UPDATED with Colab link) -->
+            <div class="glass-card rounded-2xl overflow-hidden hover-lift group"><div class="relative overflow-hidden h-48 bg-slate-800"><div class="absolute inset-0 bg-gradient-to-br from-pink-600/20 to-rose-600/20"></div><div class="absolute inset-0 flex items-center justify-center"><i data-lucide="calculator" class="w-16 h-16 text-pink-400/50"></i></div><div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-slate-900 to-transparent"><span class="text-xs font-semibold text-pink-400 bg-pink-400/10 px-2 py-1 rounded">FP&A</span></div></div><div class="p-6"><h3 class="text-xl font-bold text-white mb-2">Cash Flow Forecasting System</h3><p class="text-slate-400 text-sm mb-4">Rolling 12-month model with variance analysis, scenario planning; automated ingestion via Power Query & Python.</p><div class="flex flex-wrap gap-2 mb-4"><span class="text-xs px-2 py-1 bg-slate-800 rounded text-slate-400">Excel</span><span class="text-xs px-2 py-1 bg-slate-800 rounded text-slate-400">Power Query</span><span class="text-xs px-2 py-1 bg-slate-800 rounded text-slate-400">Python</span><span class="text-xs px-2 py-1 bg-slate-800 rounded text-slate-400">Budgeting</span></div><div class="flex gap-2"><a href="https://colab.research.google.com/drive/1GH8zz61VkdVwFUMru62AZcC5GvWquKbJ?usp=sharing" target="_blank" class="flex-1 bg-pink-500/20 hover:bg-pink-500/30 text-pink-400 py-2 rounded-lg text-sm font-medium text-center transition-colors">View Colab</a><a href="#" class="flex-1 bg-slate-700/50 hover:bg-slate-700 text-slate-300 py-2 rounded-lg text-sm font-medium text-center transition-colors">Details</a></div></div></div>
+            <!-- Avian Migration (unchanged) -->
             <div class="glass-card rounded-2xl overflow-hidden hover-lift group"><div class="relative overflow-hidden h-48 bg-slate-800"><div class="absolute inset-0 bg-gradient-to-br from-green-600/20 to-teal-600/20"></div><div class="absolute inset-0 flex items-center justify-center"><i data-lucide="bird" class="w-16 h-16 text-green-400/50"></i></div><div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-slate-900 to-transparent"><span class="text-xs font-semibold text-green-400 bg-green-400/10 px-2 py-1 rounded">Geospatial Analysis</span></div></div><div class="p-6"><h3 class="text-xl font-bold text-white mb-2">Avian Migration: Geospatial Conservation</h3><p class="text-slate-400 text-sm mb-4">Analyzed 10,000+ km migration of endangered swallows with GPS telemetry & Python geoprocessing; identified critical stopover sites.</p><div class="flex flex-wrap gap-2 mb-4"><span class="text-xs px-2 py-1 bg-slate-800 rounded text-slate-400">Geospatial</span><span class="text-xs px-2 py-1 bg-slate-800 rounded text-slate-400">Python</span><span class="text-xs px-2 py-1 bg-slate-800 rounded text-slate-400">GPS Telemetry</span><span class="text-xs px-2 py-1 bg-slate-800 rounded text-slate-400">CRS</span></div><div class="flex gap-2"><a href="https://www.kaggle.com/code/victormagadi/exercise-coordinate-reference-systems" target="_blank" class="flex-1 bg-green-500/20 hover:bg-green-500/30 text-green-400 py-2 rounded-lg text-sm font-medium text-center transition-colors">View Analysis</a></div></div></div>
-            <!-- 8 Maji Ndogo Water Access -->
-            <div class="glass-card rounded-2xl overflow-hidden hover-lift group"><div class="relative overflow-hidden h-48 bg-slate-800"><div class="absolute inset-0 bg-gradient-to-br from-cyan-600/20 to-blue-600/20"></div><div class="absolute inset-0 flex items-center justify-center"><i data-lucide="droplet" class="w-16 h-16 text-cyan-400/50"></i></div><div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-slate-900 to-transparent"><span class="text-xs font-semibold text-cyan-400 bg-cyan-400/10 px-2 py-1 rounded">Water Resource Analysis</span></div></div><div class="p-6"><h3 class="text-xl font-bold text-white mb-2">Maji Ndogo Water Access Analysis</h3><p class="text-slate-400 text-sm mb-4">SQL & Power BI project analyzing rural water access, source quality, infrastructure; supports sustainable water decisions.</p><div class="flex flex-wrap gap-2 mb-4"><span class="text-xs px-2 py-1 bg-slate-800 rounded text-slate-400">SQL</span><span class="text-xs px-2 py-1 bg-slate-800 rounded text-slate-400">Power BI</span><span class="text-xs px-2 py-1 bg-slate-800 rounded text-slate-400">Data Viz</span><span class="text-xs px-2 py-1 bg-slate-800 rounded text-slate-400">Water Analysis</span></div><div class="flex gap-2"><a href="#" class="flex-1 bg-cyan-500/20 hover:bg-cyan-500/30 text-cyan-400 py-2 rounded-lg text-sm font-medium text-center transition-colors">View Project</a></div></div></div>
+            <!-- Maji Ndogo (video) -->
+            <div class="glass-card rounded-2xl overflow-hidden hover-lift group" id="maji-ndogo-card"><div class="relative overflow-hidden h-48 bg-slate-800"><div class="absolute inset-0 bg-gradient-to-br from-cyan-600/20 to-blue-600/20 flex items-center justify-center"><i data-lucide="video" class="w-16 h-16 text-cyan-400/50"></i></div><div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-slate-900 to-transparent"><span class="text-xs font-semibold text-cyan-400 bg-cyan-400/10 px-2 py-1 rounded">Water Resource Analysis + Video</span></div></div><div class="p-6"><h3 class="text-xl font-bold text-white mb-2">Maji Ndogo Water Access Analysis</h3><p class="text-slate-400 text-sm mb-4">SQL & Power BI project analyzing rural water access, source quality, infrastructure; supports sustainable water decisions. <span class="text-emerald-400">(Video walkthrough)</span></p><div class="flex flex-wrap gap-2 mb-4"><span class="text-xs px-2 py-1 bg-slate-800 rounded text-slate-400">SQL</span><span class="text-xs px-2 py-1 bg-slate-800 rounded text-slate-400">Power BI</span><span class="text-xs px-2 py-1 bg-slate-800 rounded text-slate-400">Data Viz</span><span class="text-xs px-2 py-1 bg-slate-800 rounded text-slate-400">Water Analysis</span></div><div class="flex gap-2"><a href="javascript:void(0)" onclick="openVideoLightbox('https://www.loom.com/embed/b4c553212b354e8aa102ee08304e7994')" class="flex-1 bg-cyan-500/20 hover:bg-cyan-500/30 text-cyan-400 py-2 rounded-lg text-sm font-medium text-center transition-colors">Watch Video</a><a href="#" class="flex-1 bg-slate-700/50 hover:bg-slate-700 text-slate-300 py-2 rounded-lg text-sm font-medium text-center transition-colors">Details</a></div></div></div>
         </div>
     </div>
 </section>
 
-<!-- ===== NEW GALLERY SECTION ===== -->
+<!-- Gallery Section (3 videos + 3 images) -->
 <section id="gallery" class="py-20 bg-slate-900/30">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-12">
             <h2 class="text-3xl md:text-4xl font-bold mb-4">Project <span class="gradient-text">Gallery</span></h2>
-            <p class="text-slate-400">Visual snapshots of dashboards, maps, and analytical outputs</p>
+            <p class="text-slate-400">Visual snapshots and video walkthroughs (click to play/enlarge)</p>
         </div>
         <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-            <!-- gallery card 1 (clickable placeholder) -->
-            <div class="glass-card rounded-xl overflow-hidden aspect-square gallery-img" onclick="openLightbox('https://picsum.photos/800/600?random=1')">
-                <img src="https://picsum.photos/400/400?random=1" alt="Kiva dashboard preview" class="w-full h-full object-cover">
-                <div class="p-2 text-center text-sm text-emerald-400">Kiva Analysis</div>
-            </div>
-            <!-- 2 -->
-            <div class="glass-card rounded-xl overflow-hidden aspect-square gallery-img" onclick="openLightbox('https://picsum.photos/800/600?random=2')">
-                <img src="https://picsum.photos/400/400?random=2" alt="Financial model screenshot" class="w-full h-full object-cover">
-                <div class="p-2 text-center text-sm text-blue-400">3-Statement Model</div>
-            </div>
-            <!-- 3 -->
-            <div class="glass-card rounded-xl overflow-hidden aspect-square gallery-img" onclick="openLightbox('https://picsum.photos/800/600?random=3')">
-                <img src="https://picsum.photos/400/400?random=3" alt="Power BI dashboard" class="w-full h-full object-cover">
-                <div class="p-2 text-center text-sm text-purple-400">Sales Dashboard</div>
-            </div>
-            <!-- 4 -->
-            <div class="glass-card rounded-xl overflow-hidden aspect-square gallery-img" onclick="openLightbox('https://picsum.photos/800/600?random=4')">
-                <img src="https://picsum.photos/400/400?random=4" alt="GIS map" class="w-full h-full object-cover">
-                <div class="p-2 text-center text-sm text-teal-400">Migration Map</div>
-            </div>
-            <!-- 5 -->
-            <div class="glass-card rounded-xl overflow-hidden aspect-square gallery-img" onclick="openLightbox('https://picsum.photos/800/600?random=5')">
-                <img src="https://picsum.photos/400/400?random=5" alt="Churn model feature importance" class="w-full h-full object-cover">
-                <div class="p-2 text-center text-sm text-orange-400">Churn SHAP</div>
-            </div>
-            <!-- 6 -->
-            <div class="glass-card rounded-xl overflow-hidden aspect-square gallery-img" onclick="openLightbox('https://picsum.photos/800/600?random=6')">
-                <img src="https://picsum.photos/400/400?random=6" alt="Cash flow chart" class="w-full h-full object-cover">
-                <div class="p-2 text-center text-sm text-pink-400">Cash Flow</div>
-            </div>
-            <!-- 7 -->
-            <div class="glass-card rounded-xl overflow-hidden aspect-square gallery-img" onclick="openLightbox('https://picsum.photos/800/600?random=7')">
-                <img src="https://picsum.photos/400/400?random=7" alt="Bird migration path" class="w-full h-full object-cover">
-                <div class="p-2 text-center text-sm text-green-400">Swallow Routes</div>
-            </div>
-            <!-- 8 -->
-            <div class="glass-card rounded-xl overflow-hidden aspect-square gallery-img" onclick="openLightbox('https://picsum.photos/800/600?random=8')">
-                <img src="https://picsum.photos/400/400?random=8" alt="Water access map" class="w-full h-full object-cover">
-                <div class="p-2 text-center text-sm text-cyan-400">Maji Ndogo</div>
-            </div>
+            <!-- 3 video thumbnails (retained) -->
+            <div class="glass-card rounded-xl overflow-hidden aspect-square gallery-img" onclick="openVideoLightbox('https://www.loom.com/embed/484fbada17184f70abb34a015fd8f3c5')"><div class="relative w-full h-full"><img src="https://picsum.photos/400/400?random=2" alt="Financial model video thumbnail" class="w-full h-full object-cover"><div class="absolute inset-0 flex items-center justify-center bg-black/30"><i data-lucide="play-circle" class="w-12 h-12 text-white opacity-80"></i></div></div><div class="p-2 text-center text-sm text-blue-400">3-Statement Model (video)</div></div>
+            <div class="glass-card rounded-xl overflow-hidden aspect-square gallery-img" onclick="openVideoLightbox('https://www.loom.com/embed/6fd766cf409c47cf9398a8589a5b2a6f')"><div class="relative w-full h-full"><img src="https://picsum.photos/400/400?random=3" alt="Sales dashboard video thumbnail" class="w-full h-full object-cover"><div class="absolute inset-0 flex items-center justify-center bg-black/30"><i data-lucide="play-circle" class="w-12 h-12 text-white opacity-80"></i></div></div><div class="p-2 text-center text-sm text-purple-400">Sales Dashboard (video)</div></div>
+            <div class="glass-card rounded-xl overflow-hidden aspect-square gallery-img" onclick="openVideoLightbox('https://www.loom.com/embed/b4c553212b354e8aa102ee08304e7994')"><div class="relative w-full h-full"><img src="https://picsum.photos/400/400?random=8" alt="Maji Ndogo video thumbnail" class="w-full h-full object-cover"><div class="absolute inset-0 flex items-center justify-center bg-black/30"><i data-lucide="play-circle" class="w-12 h-12 text-white opacity-80"></i></div></div><div class="p-2 text-center text-sm text-cyan-400">Maji Ndogo (video)</div></div>
+            <!-- 3 images (Kiva, Cash Flow, Avian Migration) -->
+            <div class="glass-card rounded-xl overflow-hidden aspect-square gallery-img" onclick="openLightbox('https://picsum.photos/800/600?random=1')"><img src="https://picsum.photos/400/400?random=1" class="w-full h-full object-cover"><div class="p-2 text-center text-sm text-emerald-400">Kiva Analysis</div></div>
+            <div class="glass-card rounded-xl overflow-hidden aspect-square gallery-img" onclick="openLightbox('https://picsum.photos/800/600?random=6')"><img src="https://picsum.photos/400/400?random=6" class="w-full h-full object-cover"><div class="p-2 text-center text-sm text-pink-400">Cash Flow</div></div>
+            <div class="glass-card rounded-xl overflow-hidden aspect-square gallery-img" onclick="openLightbox('https://picsum.photos/800/600?random=7')"><img src="https://picsum.photos/400/400?random=7" class="w-full h-full object-cover"><div class="p-2 text-center text-sm text-green-400">Swallow Routes</div></div>
         </div>
-        <p class="text-center text-slate-500 text-sm mt-6">Click any image to enlarge — replace placeholder URLs with your actual project screenshots.</p>
+        <p class="text-center text-slate-500 text-sm mt-6">Click image to enlarge — video thumbnails open Loom walkthroughs. (Placeholder images, replace with actual screenshots.)</p>
     </div>
 </section>
 
-<!-- Expertise & Certifications -->
+<!-- Expertise & Certifications (full) -->
 <section id="expertise" class="py-20 bg-slate-900/50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid lg:grid-cols-2 gap-16">
@@ -247,7 +218,7 @@
     </div>
 </section>
 
-<!-- Contact Section -->
+<!-- Contact Section (Resume download link removed) -->
 <section id="contact" class="py-20 relative overflow-hidden">
     <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-emerald-500 via-blue-500 to-purple-500"></div>
     <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -262,7 +233,7 @@
                 <div class="space-y-6"><h3 class="text-xl font-bold text-white mb-6">Professional Profiles</h3>
                     <a href="https://linkedin.com/in/victor-magadi-2a1a2b170" target="_blank" class="flex items-center gap-4 group"><div class="w-12 h-12 bg-slate-800 rounded-xl flex items-center justify-center group-hover:bg-blue-600/20"><i data-lucide="linkedin" class="w-5 h-5 text-blue-500"></i></div><div><p class="text-sm text-slate-500">LinkedIn</p><p class="text-white group-hover:text-blue-400">linkedin.com/in/victor-magadi</p></div></a>
                     <a href="https://github.com/VictorMagadi" target="_blank" class="flex items-center gap-4 group"><div class="w-12 h-12 bg-slate-800 rounded-xl flex items-center justify-center group-hover:bg-slate-600/50"><i data-lucide="github" class="w-5 h-5 text-white"></i></div><div><p class="text-sm text-slate-500">GitHub</p><p class="text-white group-hover:text-slate-300">github.com/VictorMagadi</p></div></a>
-                    <a href="#" class="flex items-center gap-4 group"><div class="w-12 h-12 bg-slate-800 rounded-xl flex items-center justify-center group-hover:bg-emerald-500/20"><i data-lucide="download" class="w-5 h-5 text-emerald-400"></i></div><div><p class="text-sm text-slate-500">Resume</p><p class="text-white group-hover:text-emerald-400">Download CV (PDF)</p></div></a>
+                    <!-- Resume download link removed as requested -->
                 </div>
             </div>
             <div class="mt-10 pt-8 border-t border-slate-700 text-center"><p class="text-slate-400 text-sm italic">"Data is the new oil, but unlike oil, data is not scarce. It's the ability to refine it into insights that creates value."</p></div>
@@ -284,23 +255,36 @@
 
 <script>
     lucide.createIcons();
-    // mobile menu
+
+    // Mobile menu
     const mobileMenuBtn = document.getElementById('mobile-menu-btn');
     const mobileMenu = document.getElementById('mobile-menu');
-    mobileMenuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
-    mobileMenu.querySelectorAll('a').forEach(link => link.addEventListener('click', () => mobileMenu.classList.add('hidden')));
+    if(mobileMenuBtn) mobileMenuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+    if(mobileMenu) mobileMenu.querySelectorAll('a').forEach(link => link.addEventListener('click', () => mobileMenu.classList.add('hidden')));
 
-    // navbar scroll
+    // Navbar scroll
     const navbar = document.getElementById('navbar');
     window.addEventListener('scroll', () => {
         if (window.scrollY > 50) navbar.classList.add('bg-slate-900/95', 'backdrop-blur-md', 'shadow-lg');
         else navbar.classList.remove('bg-slate-900/95', 'backdrop-blur-md', 'shadow-lg');
     });
 
-    // lightbox function
-    function openLightbox(src) {
-        document.getElementById('lightbox-img').src = src;
-        document.getElementById('lightbox').classList.add('active');
+    // Lightbox functions
+    function openLightbox(imgSrc) {
+        const lb = document.getElementById('lightbox');
+        const content = document.getElementById('lightbox-content');
+        content.innerHTML = `<img src="${imgSrc}" alt="enlarged view">`;
+        lb.classList.add('active');
+    }
+    function openVideoLightbox(embedUrl) {
+        const lb = document.getElementById('lightbox');
+        const content = document.getElementById('lightbox-content');
+        content.innerHTML = `<iframe class="video-embed" src="${embedUrl}" allowfullscreen></iframe>`;
+        lb.classList.add('active');
+    }
+    function closeLightbox() {
+        document.getElementById('lightbox').classList.remove('active');
+        document.getElementById('lightbox-content').innerHTML = '';
     }
 
     // smooth scroll
@@ -312,7 +296,7 @@
         });
     });
 
-    // simple animation observer
+    // animation observer (for hover-lift)
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
